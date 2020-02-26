@@ -63,7 +63,7 @@
             android:id="@+id/button15"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/BabyBlue"
+            android:background="@color/babyblue"
             android:text="CPSC 315"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:id="@+id/button4"
             android:layout_width="379dp"
             android:layout_height="96dp"
-            android:background="@color/BabyBlue"
+            android:background="@color/babyblue"
             android:text="CPSC  362"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -93,7 +93,7 @@
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/BabyBlue"
+            android:background="@color/babyblue"
             android:text="CPSC  323"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -108,7 +108,7 @@
             android:id="@+id/button14"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/BabyBlue"
+            android:background="@color/babyblue"
             android:text="CPSC  471"
             android:textSize="30sp"
             android:textStyle="bold" />
