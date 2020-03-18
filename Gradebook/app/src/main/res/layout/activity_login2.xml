@@ -76,7 +76,7 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="379dp"
+            android:layout_width="430dp"
             android:layout_height="96dp"
             android:background="@color/babyblue"
             android:text="CPSC  362"
