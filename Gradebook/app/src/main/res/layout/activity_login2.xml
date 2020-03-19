@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="439dp"
+        android:layout_width="448dp"
         android:layout_height="104dp"
         android:background="@color/colorAccent"
         android:text="CHECK MY GRADE"
@@ -48,7 +48,7 @@
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/babyblue"
+            android:background="@android:color/darker_gray"
             android:text="CPSC 240"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -63,7 +63,7 @@
             android:id="@+id/button15"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/babyblue"
+            android:background="@android:color/darker_gray"
             android:text="CPSC 315"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -76,9 +76,9 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="430dp"
+            android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/babyblue"
+            android:background="@android:color/darker_gray"
             android:text="CPSC  362"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -93,7 +93,7 @@
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/babyblue"
+            android:background="@android:color/darker_gray"
             android:text="CPSC  323"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -108,7 +108,7 @@
             android:id="@+id/button14"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:background="@color/babyblue"
+            android:background="@android:color/darker_gray"
             android:text="CPSC  471"
             android:textSize="30sp"
             android:textStyle="bold" />

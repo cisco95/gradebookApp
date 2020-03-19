@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentBottom="false"
-    android:background="@color/design_default_color_primary"
+    android:background="@android:color/background_light"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -28,40 +28,42 @@
         android:layout_width="439dp"
         android:layout_height="104dp"
         android:background="@color/colorAccent"
-        android:text="CHECK MY GRADE"
+        android:text="@string/check_my_grade"
         android:textColor="@android:color/white"
         android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="EMAIL"
+        android:text="@string/email"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="PASSWORD"
+        android:inputType="text"
+        android:text="@string/password"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:autofillHints="" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGIN" />
+        android:text="@string/login" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/SignUp_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SIGN UP" />
+        android:text="@string/sign_up" />
 
 </LinearLayout>
