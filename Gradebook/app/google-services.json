@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:885031489642:android:a9a5016b83f4e675da7a13",
         "android_client_info": {
-          "package_name": "com.android.tools.build"
+          "package_name": "com.example.gradebook"
         }
       },
       "oauth_client": [
