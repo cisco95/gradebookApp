@@ -67,13 +67,15 @@ public class LoginActivity extends Activity {
                 }
                 else if(email.isEmpty() && pwd.isEmpty()){ //When both text boxes are empty
                     Toast.makeText(LoginActivity.this, "Fields are empty", Toast.LENGTH_SHORT);
+                    emailId.setError("Please enter an Email");
+                    password.setError("Please enter your Password");
                 }
                 else if(!(email.isEmpty() && pwd.isEmpty())){ //
                     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(LoginActivity.this, "Login Error, Please Try Again", Toast.LENGTH_SHORT);
+                            if(!(task.isSuccessful())){
+                                Toast.makeText(LoginActivity.this, "Login Unsuccessful, Please Sign Up", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Intent intToHome = new Intent(LoginActivity.this, HomeActivity.class);
@@ -92,7 +94,7 @@ public class LoginActivity extends Activity {
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intSignUp = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intSignUp = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intSignUp);
             }
         });
