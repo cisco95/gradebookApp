@@ -16,6 +16,7 @@ import android.widget.Button;
 public class HomeActivity extends AppCompatActivity {
 
     Button btnLogout;
+    Button btnAddClass;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -31,6 +32,15 @@ public class HomeActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intToMain = new Intent(HomeActivity.this, SignupActivity.class );
                 startActivity(intToMain);
+            }
+        });
+
+        btnAddClass = findViewById(R.id.btnAddClass);
+        btnAddClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intToClassAdd = new Intent( HomeActivity.this, ClassAdd.class);
+                startActivity(intToClassAdd);
             }
         });
 //        Toolbar toolbar = findViewById(R.id.toolbar);
