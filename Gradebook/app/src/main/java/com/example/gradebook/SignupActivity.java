@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.firestore.DocumentReference;
+//import com.google.firebase.firestore.FirebaseFirestore;
+
+//import java.util.HashMap;
+//import java.util.Map;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -26,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     FirebaseAuth mainFirebaseAuth;
+//    private DocumentReference mDocRef = FirebaseFirestore.getInstance().document("Users/Names");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,8 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         mainFirebaseAuth = FirebaseAuth.getInstance();
+
+
         emailId = findViewById(R.id.emailTxt);
         password = findViewById(R.id.pwdTxt);
         btnSignUp = findViewById(R.id.signUpBtn);
@@ -67,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(SignupActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                                 tvSignIn.setText("Log in here.");
-//                                startActivity(new Intent (SignupActivity.this, HomeActivity.class));
+                                startActivity(new Intent (SignupActivity.this, HomeActivity.class));
 
                             }
                             else{
@@ -82,6 +90,7 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "Error Occurred!", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
         tvSignIn.setOnClickListener (new View.OnClickListener() {
@@ -91,5 +100,19 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
+
+//    public void addUserToDB(View view){
+//        emailId = findViewById(R.id.emailTxt);
+//        String userEmail = emailId.getText().toString();
+//        if (userEmail.isEmpty()) {
+//            return;
+//        }
+//        Map<String, Object> dataToSave = new HashMap<String, Object>();
+//        dataToSave.put("User Email", userEmail);
+//        mDocRef.set(dataToSave);
+//
+//
+//    }
 }

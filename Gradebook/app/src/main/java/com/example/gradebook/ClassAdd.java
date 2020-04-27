@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class ClassAdd extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class ClassAdd extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
-    FirebaseDatabase database;
+//    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
