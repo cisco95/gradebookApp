@@ -16,11 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.firestore.DocumentReference;
-//import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-//import java.util.HashMap;
-//import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     FirebaseAuth mainFirebaseAuth;
-//    private DocumentReference mDocRef = FirebaseFirestore.getInstance().document("Users/Names");
+    DocumentReference mDocRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,9 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = emailId.getText().toString();
+                final String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
+                mDocRef = FirebaseFirestore.getInstance().document("Users/" + email);
                 if (email.isEmpty()){
                     emailId.setError("Please enter an email");
                     emailId.requestFocus();
@@ -75,6 +76,14 @@ public class SignupActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(SignupActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                                 tvSignIn.setText("Log in here.");
+
+                                Map<String, Object> dataToSave = new HashMap<String, Object>();
+                                dataToSave.put("User Email", email);
+                                dataToSave.put( "First Name", "John");
+                                dataToSave.put("Last Name", "Doe");
+                                dataToSave.put( "DOB", "04-27-2020");
+                                mDocRef.set(dataToSave);
+
                                 startActivity(new Intent (SignupActivity.this, HomeActivity.class));
 
                             }
