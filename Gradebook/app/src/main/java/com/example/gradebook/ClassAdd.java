@@ -30,7 +30,7 @@ public class ClassAdd extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     FirebaseAuth mFirebaseAuth;
-    DocumentReference mDocRef;
+    FirebaseFirestore db;
 
 
     @Override
@@ -43,6 +43,7 @@ public class ClassAdd extends AppCompatActivity {
         btn_addClass = findViewById(R.id.btn_addClass);
         btn_cancel = findViewById(R.id.btn_cancel);
         progressDialog = new ProgressDialog(this);
+        db = FirebaseFirestore.getInstance();
 
 
 
@@ -57,24 +58,29 @@ public class ClassAdd extends AppCompatActivity {
         btn_addClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mFirebaseUser = mFirebaseAuth.getUid();
+//                String mFirebaseUser = mFirebaseAuth.getUid();
                 String classTitle = className.getText().toString();
+                CourseList courseList = new CourseList();
+                Course course = new Course(classTitle);
+                courseList.addSemesterCourse(course);
 
-
-                if(mFirebaseUser != null){
+//                if(mFirebaseUser != null){
                     //add class
-                    mDocRef = FirebaseFirestore.getInstance().document("Users/" + mFirebaseUser);
-                    Map<String, Object> dataToSave = new HashMap<String, Object>();
-                    dataToSave.put("Class Title", className);
-                    mDocRef.set(dataToSave);
+//                    Map<String, Object> dataToSave = new HashMap<String, Object>();
+//                    dataToSave.put("Class Title", className);
+//                    dataToSave.put("Class Grade", 100);
+//
+//                    db.collection("Users").document(mFirebaseUser)
+//                                    .collection("Class").add(dataToSave);
+//
                     Intent i = new Intent( ClassAdd.this, MainActivity.class);
                     startActivity(i);
 
                 }
-                else {
-                    Toast.makeText(ClassAdd.this, "Please Log In", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent (ClassAdd.this, LoginActivity.class);
-                    startActivity(i);
+//                else {
+//                    Toast.makeText(ClassAdd.this, "Please Log In", Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent (ClassAdd.this, LoginActivity.class);
+//                    startActivity(i);
 
                 }
                 //Toast.makeText(ClassAdd.this, "Feature Coming Soon", Toast.LENGTH_LONG).show();
