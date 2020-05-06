@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,7 +25,7 @@ import java.util.Map;
 
 
 public class SignupActivity extends AppCompatActivity {
-    private EditText emailId, password;
+    private EditText emailId, password, firstName, lastName, DOB;
     private Button btnSignUp;
     private TextView tvSignIn;
 
@@ -45,6 +46,10 @@ public class SignupActivity extends AppCompatActivity {
 
         emailId = findViewById(R.id.emailTxt);
         password = findViewById(R.id.pwdTxt);
+        firstName = findViewById(R.id.firstName);
+        lastName = findViewById(R.id.lastName);
+        DOB = findViewById(R.id.DOB);
+
         btnSignUp = findViewById(R.id.signUpBtn);
         tvSignIn = findViewById(R.id.SignInTxt);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -52,19 +57,37 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
-                mDocRef = FirebaseFirestore.getInstance().document("Users/" + email);
+                final String fName = firstName.getText().toString();
+                final String lName = lastName.getText().toString();
+                final String bDay = DOB.getText().toString();
+                String mFirebaseUser = mainFirebaseAuth.getUid();
+
+                mDocRef = FirebaseFirestore.getInstance().document("Users/" + mFirebaseUser);
                 if (email.isEmpty()){
                     emailId.setError("Please enter an email");
                     emailId.requestFocus();
                 }
                 else if (pwd.isEmpty()){
-                    password.setError("Please enter an email");
+                    password.setError("Please enter a password");
                     password.requestFocus();
                 }
-                else if (email.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(SignupActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
+                else if (fName.isEmpty()){
+                    firstName.setError("Please enter a First Name");
+                    firstName.requestFocus();
                 }
-                else if (!(email.isEmpty() && pwd.isEmpty())){
+                else if (lName.isEmpty()){
+                    lastName.setError("Please enter a Last Name");
+                    lastName.requestFocus();
+                }
+                else if (bDay.isEmpty()){
+                    DOB.setError("Please enter a Date of Birth");
+                    DOB.requestFocus();
+                }
+
+                else if (email.isEmpty() && pwd.isEmpty() && fName.isEmpty() && lName.isEmpty() && bDay.isEmpty()){
+                    Toast.makeText(SignupActivity.this, "All Fields Are Empty!", Toast.LENGTH_SHORT).show();
+                }
+                else if (!(email.isEmpty() && pwd.isEmpty() && fName.isEmpty() && lName.isEmpty() && bDay.isEmpty())){
 
                     progressDialog.setMessage("Registering User...");
                     progressDialog.show();
@@ -79,9 +102,9 @@ public class SignupActivity extends AppCompatActivity {
 
                                 Map<String, Object> dataToSave = new HashMap<String, Object>();
                                 dataToSave.put("User Email", email);
-                                dataToSave.put( "First Name", "John");
-                                dataToSave.put("Last Name", "Doe");
-                                dataToSave.put( "DOB", "04-27-2020");
+                                dataToSave.put( "First Name", fName);
+                                dataToSave.put("Last Name", lName);
+                                dataToSave.put( "DOB", bDay);
                                 mDocRef.set(dataToSave);
 
                                 startActivity(new Intent (SignupActivity.this, HomeActivity.class));

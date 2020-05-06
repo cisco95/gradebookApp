@@ -40,7 +40,7 @@ public class LoginActivity extends Activity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if(mFirebaseUser != null){
-                    Toast.makeText(LoginActivity.this, "You are Logged In", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "You are Logged In" , Toast.LENGTH_LONG).show();
                     Intent i = new Intent (LoginActivity.this, HomeActivity.class);
                     startActivity(i);
                 }
